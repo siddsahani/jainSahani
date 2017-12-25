@@ -1,57 +1,33 @@
 /**
- * Sample React Native App
+ * React Native App
  * https://github.com/facebook/react-native
  * @flow
  */
+import React from "react"
+import { AppRegistry } from 'react-native';
+import BackgroundTasks from './background-tasks';
+/*import { createStore, applyMiddleware } from "redux"
+import { createEpicMiddleware } from "redux-observable"
+import { Provider } from "react-redux"
+import { createLogger } from "redux-logger"
+import { reducer } from "../reducer/index"
+import { rootEpic } from "../middleware/index"*/
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+export default function () {
+  //const middleware = [createEpicMiddleware(rootEpic)]
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-  'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-  'Shake or press menu button for dev menu',
-});
+  //const store = createStore(
+  // reducer,
+  //  applyMiddleware(...[createEpicMiddleware(rootEpic), __DEV__ && logger].filter(Boolean)))
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome!
-        </Text>
-        <Text style={styles.instructions}>
-          ----- ProjectX under development -----
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
+  const App = () => <BackgroundTasks />
+  // <Provider store={store}>
+  //<BackgroundTasks />
+  // </Provider>
+
+  AppRegistry.registerComponent("ProjectX", () => (props => <App />))
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+//const logger = createLogger({
+//  level: "log"
+//})
