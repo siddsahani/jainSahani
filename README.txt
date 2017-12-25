@@ -1,3 +1,3 @@
 THIS IS THE README FILE. CHECKOUT THIS SPACE FOR MORE DETAILS.
 
-** Checking push using git **
+*** Checking push using git ***
