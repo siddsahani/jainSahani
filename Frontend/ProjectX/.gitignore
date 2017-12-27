@@ -22,6 +22,9 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+#Facebook framework ignore
+ios/Frameworks/*
+
 # Android/IntelliJ
 #
 build/

@@ -3,29 +3,58 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight,
+  Alert,
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-  'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-  'Shake or press menu button for dev menu',
-});
+const FBSDK = require('react-native-fbsdk');
+const {
+  LoginButton,
+  LoginManager,
+  AccessToken
+} = FBSDK;
 
 export default class Login extends Component<{}> {
+
+  loginButton() {
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      function (result) {
+        if (result.isCancelled) {
+          alert('Login was cancelled');
+        } else {
+          alert('Login was successful with permissions: '
+            + result.grantedPermissions.toString());
+        }
+      },
+      function (error) {
+        alert('Login failed with error: ' + error);
+      }
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome!
-        </Text>
-        <Text style={styles.instructions}>
-          ----- ProjectX under development -----
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <LoginButton
+          readPermissions={['public_profile', 'email', 'user_friends']}
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                alert("Login failed with error: " + result.error);
+              } else if (result.isCancelled) {
+                alert("Login was cancelled");
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    alert(data.accessToken.toString())
+                  }
+                )
+                //alert("Login was successful with permissions: " + result.grantedPermissions)
+              }
+            }
+          }
+          onLogoutFinished={() => alert("User logged out")} />
       </View>
     );
   }
