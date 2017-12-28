@@ -6,6 +6,7 @@ import {
   View,
   TouchableHighlight,
   Alert,
+  Image
 } from 'react-native';
 
 const FBSDK = require('react-native-fbsdk');
@@ -15,9 +16,66 @@ const {
   AccessToken
 } = FBSDK;
 
-export default class Login extends Component<{}> {
+import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 
-  loginButton() {
+export default class Login extends Component<{}> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      googleUserLoggedIn: false
+    }
+
+  }
+  componentDidMount() {
+    this.setupGoogleSignin();
+  }
+
+  googleAuth() {
+    if (this.state.googleUserLoggedIn) {
+      GoogleSignin.signOut()
+        .then(() => {
+          this.setState({ googleUserLoggedIn: false })
+          console.log('out');
+        })
+        .catch((err) => {
+        });
+    } else {
+      GoogleSignin.signIn()
+        .then((user) => {
+          this.setState({ googleUserLoggedIn: true })
+          alert("signIn", user);
+          console.log(user);
+        })
+        .catch((err) => {
+          alert("WRONG SIGNIN", err);
+
+          console.log('WRONG SIGNIN', err);
+        })
+        .done();
+    }
+  }
+
+  async setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+      await GoogleSignin.configure({
+        iosClientId: '468673413267-tqu0r624lvm82tmuvaogjflfu2n55ant.apps.googleusercontent.com',
+        //webClientId: settings.webClientId,
+        offlineAccess: false
+      });
+
+      const user = await GoogleSignin.currentUserAsync();
+      //alert("currentUserAsync", user);
+
+      console.log(user);
+    }
+    catch (err) {
+      console.log("Google signin error", err.code, err.message);
+    }
+  }
+
+
+  fbAuth() {
     LoginManager.logInWithReadPermissions(['public_profile']).then(
       function (result) {
         if (result.isCancelled) {
@@ -55,7 +113,26 @@ export default class Login extends Component<{}> {
             }
           }
           onLogoutFinished={() => alert("User logged out")} />
-      </View>
+
+        <View>
+          <TouchableHighlight
+            style={{ marginTop: 30, height: 45, justifyContent: 'center', backgroundColor: '#4285F4' }}
+            onPress={this.fbAuth.bind(this)}>
+            <Text>Sign in with Facebook custom UI</Text>
+          </TouchableHighlight>
+        </View>
+
+        <TouchableHighlight
+          style={{ marginTop: 30, height: 45, justifyContent: 'center', backgroundColor: '#4285F4' }}
+          onPress={this.googleAuth.bind(this)}>
+          {this.state.googleUserLoggedIn ?
+            <Text> Google Logout custom UI</Text>
+            :
+            <Text>Sign in with Google custom UI</Text>
+          }
+
+        </TouchableHighlight>
+      </View >
     );
   }
 }

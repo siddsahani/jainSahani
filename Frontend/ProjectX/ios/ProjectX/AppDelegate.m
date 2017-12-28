@@ -12,6 +12,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <RNGoogleSignin/RNGoogleSignin.h>
 
 @implementation AppDelegate
 
@@ -21,15 +22,17 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
   
-  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                                openURL:url
-                                                      sourceApplication:sourceApplication
-                                                             annotation:annotation
-                  ];
-  // Add any custom logic here.
-  return handled;
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation
+          ]
+  || [RNGoogleSignin application:application
+                         openURL:url
+               sourceApplication:sourceApplication
+                      annotation:annotation
+      ];
 }
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
