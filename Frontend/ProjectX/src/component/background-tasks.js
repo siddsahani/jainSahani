@@ -8,7 +8,7 @@ import {
 
 import AppNavigator from './app-navigator'
 
-export default class BackgroundTask extends Component<{}> {
+class BackgroundTask extends Component<{}> {
   render() {
     return (
       <AppNavigator />
@@ -23,4 +23,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
-});
+})
+
+export default BackgroundTask
