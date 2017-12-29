@@ -63,6 +63,8 @@
     <string>174529646474595</string>
     <key>FacebookDisplayName</key>
     <string>ProjectX</string>
+    <key>AccountKitClientToken</key>
+    <string>cc8d35624e89f66437e81e13d6f80495</string>
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>fbapi</string>

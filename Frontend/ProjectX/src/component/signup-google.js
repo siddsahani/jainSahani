@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
-import FaceBookSignup from "./signup-fb"
-import FaceBookCustomBtnSignup from "./signup-custombtn-fb"
-import GoogleSignup from "./signup-google"
-import MobileNoVerification from "./signup-fb-mobile"
+import { GoogleSignin } from 'react-native-google-signin';
 
-export default class Login extends Component<{}> {
+export default class GoogleSignup extends Component<{}> {
   constructor(props) {
     super(props)
     this.state = {
@@ -67,30 +64,18 @@ export default class Login extends Component<{}> {
     }
   }
 
-
-  fbAuth() {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      function (result) {
-        if (result.isCancelled) {
-          alert('Login was cancelled');
-        } else {
-          alert('Login was successful with permissions: '
-            + result.grantedPermissions.toString());
-        }
-      },
-      function (error) {
-        alert('Login failed with error: ' + error);
-      }
-    );
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        <FaceBookSignup />
-        <FaceBookCustomBtnSignup />
-        <GoogleSignup />
-        <MobileNoVerification />
+      <View style={{ margin: 10 }}>
+        <TouchableHighlight
+          style={{ height: 50, width: 300, justifyContent: 'center', alignItems: 'center', backgroundColor: 'skyblue' }}
+          onPress={this.googleAuth.bind(this)}>
+          {this.state.googleUserLoggedIn ?
+            <Text> Google Logout custom UI</Text>
+            :
+            <Text>Sign up using Google custom UI</Text>
+          }
+        </TouchableHighlight>
       </View >
     );
   }
