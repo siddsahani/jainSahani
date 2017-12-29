@@ -9,7 +9,7 @@ import {
 const FBSDK = require('react-native-fbsdk');
 const {LoginManager} = FBSDK;
 
-export default class FaceBookCustomBtnSignup extends Component<{}> {
+class FaceBookCustomBtnSignup extends Component<{}> {
   fbAuth() {
     LoginManager.logInWithReadPermissions(['public_profile']).then(
       function (result) {
@@ -46,4 +46,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
-});
+})
+
+export default FaceBookCustomBtnSignup

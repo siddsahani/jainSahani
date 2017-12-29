@@ -9,7 +9,7 @@ import {
 const FBSDK = require('react-native-fbsdk');
 const {LoginButton, AccessToken} = FBSDK;
 
-export default class FaceBookSignup extends Component<{}> {
+class FaceBookSignup extends Component<{}> {
   render() {
     return (
       <View style={{ margin: 20 }}>
@@ -44,4 +44,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
-});
+})
+
+export default FaceBookSignup

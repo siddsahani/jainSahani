@@ -8,7 +8,7 @@ import {
 
 import { GoogleSignin } from 'react-native-google-signin';
 
-export default class GoogleSignup extends Component<{}> {
+class GoogleSignup extends Component<{}> {
   constructor(props) {
     super(props)
     this.state = {
@@ -88,4 +88,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
-});
+})
+
+export default GoogleSignup
