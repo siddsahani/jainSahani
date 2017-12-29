@@ -5,11 +5,12 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-
+import { connect } from "react-redux"
 import FaceBookSignup from "./signup-fb"
 import FaceBookCustomBtnSignup from "./signup-custombtn-fb"
 import GoogleSignup from "./signup-google"
 import MobileNoVerification from "./signup-fb-mobile"
+import { loginAction } from "../action/auth-action"
 
 class Login extends Component<{}> {
   render() {
@@ -23,7 +24,7 @@ class Login extends Component<{}> {
         <View style={{}}>
           <TouchableHighlight
             style={{ height: 50, width: 300, justifyContent: 'center', alignItems: 'center', backgroundColor: 'skyblue' }}
-            onPress={() => alert("hello")}
+            onPress={this.props.login}
             >
             <Text> Test Login</Text>
           </TouchableHighlight>
@@ -41,4 +42,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   }
 })
-export default Login
+
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: () => dispatch(loginAction())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

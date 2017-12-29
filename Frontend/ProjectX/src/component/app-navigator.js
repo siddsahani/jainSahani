@@ -3,8 +3,7 @@ import React from "react"
 import Login from "./login"
 
 export default AppNavigator = props => {
-  if (true)
-    return (<Login />)
+  return (<Login />)
 }
 
 //const isWaiting = state => isWaitingNetwork(state)
