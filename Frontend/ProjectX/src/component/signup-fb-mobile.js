@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from "react-redux"
 import { StyleSheet, Text, View, TouchableOpacity, Switch } from 'react-native'
-
 import AccountKit, { LoginButton, Color, StatusBarStyle } from 'react-native-facebook-account-kit'
 
 class MobileNoVerification extends Component {
@@ -133,7 +132,9 @@ class MobileNoVerification extends Component {
 
   render() {
     return (
-      <View style={{ margin: 20 }}>{this.state.loggedAccount ? this.renderUserLogged() : this.renderLogin()}</View>
+      <View style={{ margin: 20 }}>{
+        this.state.loggedAccount ? this.renderUserLogged() : this.renderLogin()}
+      </View>
     )
   }
 }
@@ -169,4 +170,14 @@ const styles = StyleSheet.create({
   },
 })
 
-export default MobileNoVerification
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MobileNoVerification)
