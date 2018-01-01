@@ -1,0 +1,4 @@
+# exclude all the in the .idea folder
+**/.idea
+**/target
+**/out
