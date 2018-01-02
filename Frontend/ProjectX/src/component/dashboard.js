@@ -18,38 +18,25 @@ class Dashboard extends Component<{}> {
     super(props)
   }
 
-  renderTabComponent() {
+  renderTabTitleOrComponent(title) {
     if (this.props.tabKey === "FRIENDS")
-      return <Friends />
+      return title ? "FRIENDS" : <Friends />
     else if (this.props.tabKey === "ADD")
-      return <Add />
+      return title ? "ADD" : <Add />
     else if (this.props.tabKey === "PROFILE")
-      return <Profile />
+      return title ? "PROFILE" : <Profile />
     else
-      return <Home />
+      return title ? "SMART EXPENSE MANAGER" : <Home />
   }
-
-  renderNavigationBarTitle() {
-    if (this.props.tabKey === "FRIENDS")
-      return "FRIENDS"
-    else if (this.props.tabKey === "ADD")
-      return "ADD"
-    else if (this.props.tabKey === "PROFILE")
-      return "PROFILE"
-    else
-      return "SMART EXPENSE MANAGER"
-
-  }
-
 
   render() {
     return (
       <View style={styles.container}>
         <NavigationBar
-          title={this.renderNavigationBarTitle()}
+          title={this.renderTabTitleOrComponent(true)}
           />
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          {this.renderTabComponent()}
+          {this.renderTabTitleOrComponent(false)}
         </View>
         <TabBar />
       </View >

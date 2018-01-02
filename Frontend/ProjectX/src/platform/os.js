@@ -1,4 +1,4 @@
-import {Platform} from "react-native"
+import { Platform } from "react-native"
 
 /**
  * A simple abstraction of the current platform which primarily delegates to the React-Native one
@@ -18,5 +18,9 @@ export default class {
 
 	static get uwp() {
 		return this.os === "windows"
+	}
+
+	static icon(name) {
+		return (this.os === "android" ? "md-" : "ios-") + name
 	}
 }

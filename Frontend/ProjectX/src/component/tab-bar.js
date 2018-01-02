@@ -8,44 +8,67 @@ import {
 } from 'react-native';
 import { connect } from "react-redux"
 import { displaySelectedTabPageAction } from "../action/tab-bar-action"
+import Icon from "react-native-vector-icons/Ionicons"
+import OS from "../platform/os"
 
 class TabBar extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-          <TouchableHighlight
+        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+          <Icon.Button
+            name={OS.icon("home")}
+            size={32}
+            backgroundColor="#00000000"
+            color={'black'}
+            iconName="Home"
+            iconStyle={{ justifyContent: 'center', alignItems: 'center' }}
             onPress={() => this.props.displaySelectedTabPage("HOME")}
-            style={{ alignItems: 'center' }}>
-            <Text style={{}}> 1st ICON</Text>
-          </TouchableHighlight>
+            underlayColor="#00000000" />
         </View>
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-          <TouchableHighlight
+        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+          <Icon.Button
+            name={OS.icon("people")}
+            size={32}
+            backgroundColor="#00000000"
+            color={'black'}
+            iconName="Friends"
+            iconStyle={{ alignItems: 'center' }}
             onPress={() => this.props.displaySelectedTabPage("FRIENDS")}
-            style={{ alignItems: 'center' }}>
-            <Text style={{}}> 2nd ICON</Text>
-          </TouchableHighlight>
+            underlayColor="#00000000" />
         </View>
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-          <TouchableHighlight
+        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+          <Icon.Button
+            name={OS.icon("close-circle")}
+            size={46}
+            backgroundColor="#00000000"
+            color={'black'}
+            iconName="Add"
+            //iconStyle={{ alignItems: 'flex-start' }}
             onPress={() => this.props.displaySelectedTabPage("ADD")}
-            style={{ alignItems: 'center' }}>
-            <Text style={{}}> 3rd ICON</Text>
-          </TouchableHighlight>
+            underlayColor="#00000000" />
         </View>
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-          <TouchableHighlight
-            style={{ alignItems: 'center' }}>
-            <Text style={{}}> 4th ICON</Text>
-          </TouchableHighlight>
+        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+          <Icon.Button
+            name={OS.icon("calendar")}
+            size={32}
+            backgroundColor="#00000000"
+            color={'black'}
+            iconName="Activity"
+            //iconStyle={{ alignItems: 'flex-start' }}
+            onPress={() => this.props.displaySelectedTabPage("HOME")}
+            underlayColor="#00000000" />
         </View>
-        <View style={{ justifyContent: 'center', flex: 1 }}>
-          <TouchableHighlight
+        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+          <Icon.Button
+            name={OS.icon("person")}
+            size={32}
+            backgroundColor="#00000000"
+            color={'black'}
+            iconName="Profile"
+            //iconStyle={{ alignItems: 'flex-start' }}
             onPress={() => this.props.displaySelectedTabPage("PROFILE")}
-            style={{ alignItems: 'center' }}>
-            <Text style={{}}> 5th ICON</Text>
-          </TouchableHighlight>
+            underlayColor="#00000000" />
         </View>
 
       </View>
@@ -59,7 +82,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#F5FCCC',
+    borderTopWidth: 1,
+    borderColor: 'gray',
+    backgroundColor: 'white'
   }
 })
 

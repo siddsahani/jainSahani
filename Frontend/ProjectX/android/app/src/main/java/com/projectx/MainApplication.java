@@ -3,6 +3,8 @@ package com.projectx;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.underscope.react.fbak.RNAccountKitPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
@@ -36,6 +38,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new RNGoogleSigninPackage(),
             new RNAccountKitPackage(),
             new RNFetchBlobPackage(),
             new RNGoogleSigninPackage(),
