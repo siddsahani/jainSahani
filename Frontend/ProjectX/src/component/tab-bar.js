@@ -7,7 +7,7 @@ import {
   Dimensions
 } from 'react-native';
 import { connect } from "react-redux"
-import { displaySelectedTabPageAction } from "../action/tab-bar-action"
+import { displaySelectedPageAction } from "../action/tab-bar-action"
 import Icon from "react-native-vector-icons/Ionicons"
 import OS from "../platform/os"
 
@@ -20,10 +20,10 @@ class TabBar extends Component<{}> {
             name={OS.icon("home")}
             size={32}
             backgroundColor="#00000000"
-            color={'black'}
+            color={this.props.pageKey === "HOME" ? 'black' : 'grey'}
             iconName="Home"
             iconStyle={{ justifyContent: 'center', alignItems: 'center' }}
-            onPress={() => this.props.displaySelectedTabPage("HOME")}
+            onPress={() => this.props.displaySelectedPage("HOME")}
             underlayColor="#00000000" />
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -31,10 +31,10 @@ class TabBar extends Component<{}> {
             name={OS.icon("people")}
             size={32}
             backgroundColor="#00000000"
-            color={'black'}
+            color={this.props.pageKey === "FRIENDS" ? 'black' : 'grey'}
             iconName="Friends"
             iconStyle={{ alignItems: 'center' }}
-            onPress={() => this.props.displaySelectedTabPage("FRIENDS")}
+            onPress={() => this.props.displaySelectedPage("FRIENDS")}
             underlayColor="#00000000" />
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -42,10 +42,10 @@ class TabBar extends Component<{}> {
             name={OS.icon("close-circle")}
             size={46}
             backgroundColor="#00000000"
-            color={'black'}
+            color={this.props.pageKey === "ADD" ? 'black' : 'grey'}
             iconName="Add"
             //iconStyle={{ alignItems: 'flex-start' }}
-            onPress={() => this.props.displaySelectedTabPage("ADD")}
+            onPress={() => this.props.displaySelectedPage("ADD")}
             underlayColor="#00000000" />
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -53,10 +53,10 @@ class TabBar extends Component<{}> {
             name={OS.icon("calendar")}
             size={32}
             backgroundColor="#00000000"
-            color={'black'}
+            color={this.props.pageKey === "HOME" ? 'black' : 'grey'}
             iconName="Activity"
             //iconStyle={{ alignItems: 'flex-start' }}
-            onPress={() => this.props.displaySelectedTabPage("HOME")}
+            onPress={() => this.props.displaySelectedPage("HOME")}
             underlayColor="#00000000" />
         </View>
         <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -64,10 +64,10 @@ class TabBar extends Component<{}> {
             name={OS.icon("person")}
             size={32}
             backgroundColor="#00000000"
-            color={'black'}
+            color={this.props.pageKey === "PROFILE" ? 'black' : 'grey'}
             iconName="Profile"
             //iconStyle={{ alignItems: 'flex-start' }}
-            onPress={() => this.props.displaySelectedTabPage("PROFILE")}
+            onPress={() => this.props.displaySelectedPage("PROFILE")}
             underlayColor="#00000000" />
         </View>
 
@@ -95,7 +95,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displaySelectedTabPage: (tabKey) => dispatch(displaySelectedTabPageAction(tabKey)),
+    displaySelectedPage: (pageKey) => dispatch(displaySelectedPageAction(pageKey)),
   }
 }
 

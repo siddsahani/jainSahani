@@ -1,3 +1,3 @@
 import { createAction } from "./index"
 
-export const displaySelectedTabPageAction = (tabKey) => createAction("DISPLAY_SELECTED_TAB_PAGE", { tabKey: tabKey })
+export const displaySelectedPageAction = (pageKey) => createAction("DISPLAY_SELECTED_PAGE", { pageKey: pageKey })

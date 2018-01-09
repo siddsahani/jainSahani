@@ -18,14 +18,14 @@ export default function () {
     reducer,
     applyMiddleware(...[createEpicMiddleware(rootEpic), __DEV__ && logger].filter(Boolean)))
 
-  const App = () => 
-		<Provider store={store}>
-			<BackgroundTasks />
-		</Provider>
+  const App = () =>
+    <Provider store={store}>
+      <BackgroundTasks />
+    </Provider>
 
   AppRegistry.registerComponent("ProjectX", () => (props => <App />))
 }
 
 const logger = createLogger({
- level: "log"
+  level: "log"
 })

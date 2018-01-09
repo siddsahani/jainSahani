@@ -5,10 +5,15 @@ import {
   Text,
   View
 } from 'react-native';
-
+import { connect } from "react-redux"
 import AppNavigator from './app-navigator'
+import { loadStoreAction } from "../action/persist-sore-action"
 
 class BackgroundTask extends Component<{}> {
+  componentDidMount() {
+    this.props.loadStore(1234)
+  }
+
   render() {
     return (
       <AppNavigator />
@@ -25,4 +30,16 @@ const styles = StyleSheet.create({
   }
 })
 
-export default BackgroundTask
+const mapStateToProps = (state) => {
+  return {
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadStore: (userId) => dispatch(loadStoreAction(userId))
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BackgroundTask)

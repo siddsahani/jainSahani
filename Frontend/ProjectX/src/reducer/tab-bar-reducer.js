@@ -1,11 +1,11 @@
 import { isOK } from "../action/index"
 
-export default function tabBar(state = { tabKey: '' }, action) {
+export default function tabBar(state = { pageKey: '' }, action) {
   switch (action.type) {
-    case "DISPLAY_SELECTED_TAB_PAGE": {
-      const { tabKey, ...rest } = state
+    case "DISPLAY_SELECTED_PAGE": {
+      const { pageKey, ...rest } = state
       return {
-        tabKey: action.payload.tabKey,
+        pageKey: action.payload.pageKey,
         ...rest
       }
     }
